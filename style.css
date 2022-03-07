@@ -1,0 +1,266 @@
+/* 1. VARIABLES */
+:root {
+  --blue: #38bdf8;
+  --white: #fff;
+  --gray: #e2e8f0;
+  --orange: #fdba74;
+  --black: #374151;
+}
+
+/* 2. RESETS */
+body {
+  margin: 0;
+  font-size: 16px;
+}
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+/* page container */
+#container {
+  width: 100vw;
+}
+button, img, li {
+  cursor: pointer;
+}
+
+/* GLOBALS */
+.admin-icon {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid red;
+  border-radius: 50%;
+  padding: 0.2rem;
+}
+
+/* 3. NAV */
+/* menu close icon and menu list - hidden by default */
+#menu-close,
+#menu-container {
+  display: none;
+}
+
+/* navigation */
+nav {
+  display: flex;
+  padding: 0.5rem 1.5rem;
+  justify-content: space-between;
+  background-color: var(--blue);
+  color: var(--white);
+}
+#logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+/* hidden menu */
+#menu-container {
+  /* flex container */
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--blue);
+  border-top: 1px solid var(--white);
+  color: var(--white);
+  line-height: 1.5rem;
+}
+/* nav links */
+.nav-group li {
+  display: flex;
+  align-items: center;
+}
+.nav-group li span {
+  margin-left: 0.5rem;
+}
+
+/* 4. MAIN - HEADER */
+section {
+  box-shadow: 0 3px 4px 3px var(--black);
+}
+header, section {
+  padding: 0.5rem 2rem 0.5rem 1.5rem;
+}
+header {
+  padding-bottom: 2rem;
+}
+#search-section,
+#admin-section {
+  display: flex;
+  flex-direction: column;
+}
+#search-bar,
+#admin-profile,
+#admin-data,
+#admin-panel {
+  width: 100%;
+  display: grid;
+  gap: 0.5rem;
+}
+/* search section */
+#search-bar {
+  grid-template-columns: auto 10fr;
+  justify-content: end;
+  
+}
+#search-bar input {
+  background-color: var(--gray);
+  border: 0;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+}
+#admin-profile {
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: end;
+}
+/* admin section */
+#admin-section {
+  gap: 0.5rem;
+}
+#admin-data {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#admin-panel button {
+  background-color: var(--blue);
+  border: 0;
+  border-radius: 1em;
+  padding: 0.5em;
+  color: var(--white);
+}
+#admin-text p {
+  margin: 0.5em;
+}
+
+/* 5. MAIN - PROJECTS SECTION */
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--gray);
+}
+#projects h1 {
+  text-align: center;
+}
+.projects-group {
+  display: grid;
+  gap: 1rem;
+}
+.project-card {
+  border-left: 1rem solid var(--orange);
+  padding: 0.5em 0.5em 0.5em 1em;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  box-shadow: 1px 2px 2px 1px var(--black);
+}
+.project-card .project-control {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+/* 6. MAIN - ANNOUNCEMENTS SECTION */
+#announcements-container {
+  background-color: var(--white);
+  padding: 1em;
+  border-radius: 0.5rem;
+}
+#announcements h1 {
+  text-align: center;
+}
+/* 7. MAIN - TRENDING */
+#trending-title {
+  text-align: center;
+}
+#trending-container {
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  padding: 1em;
+}
+.trending-group {
+  display: flex;
+  align-items: center;
+}
+.trending-data p {
+  margin: 0.5em;
+}
+
+/* 8. @MEDIA - TABLET */
+@media (min-width: 768px) {
+  /* search section */
+  #search-section {
+    flex-direction: row;
+  }
+  #search-bar {
+    align-items: center;
+  }
+  /* admin section */
+  #admin-section {
+    flex-direction: row;
+  }
+  #admin-panel {
+    grid-template-columns: auto auto auto;
+    height: 1rem;
+  }
+  #admin-panel {
+    align-self: center;
+  }
+  /* projects section */
+  .projects-group {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* section group announcements and trending */
+  #section-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+/* @MEDIA - PC */
+@media (min-width: 1024px) {
+  #container {
+    display: grid;
+    grid-template-areas: "nav nav main"
+                         "menu menu main"
+                         "menu menu main";
+    grid-template-rows: auto 1fr 1fr;                     
+  }
+  nav {
+    display: block;
+    grid-area: nav;
+  }
+  #menu {
+    display: none;
+  }
+  #menu-container {
+    /* display: block !important; - bug fix 
+    (when user resize browser to smaller screen and click on menu icon, 
+    menu container get display:none, if he resize back window to width greater then 1024px 
+    this container will still be display: none so !important fix this problem) */
+    display: block !important; 
+    border: 0;
+    grid-area: menu;
+  }
+  .nav-group {
+    display: grid;
+    gap: 1rem;
+  }
+  main {
+    grid-area: main;
+  }
+  section {
+    box-shadow: 0 -1px 4px 0 var(--black);
+    flex-direction: row;
+  }
+  #projects {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  .project-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  #section-group {
+    grid-template-columns: 1fr;
+  }
+}
